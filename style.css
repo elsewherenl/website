@@ -616,3 +616,53 @@ body {
         margin: 0 0 0.75rem 0;
     }
 }
+
+/* Wordmark - mobile first: large & low beneath image */
+.hero-wordmark {
+  position: relative;
+  margin: 2rem 1rem 0;            /* push it farther down beneath image */
+  text-align: left;              /* align with hero-text */
+}
+
+.hero-wordmark h2 {
+  font-family: var(--font-title); /* Space Grotesk */
+  font-weight: 700;
+  font-size: 1.8rem;              /* changed from 2.5rem to 1.8rem on mobile */
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Tablet (iPad) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-wordmark {
+    margin: 3rem 2rem 0;
+  }
+  .hero-wordmark h2 {
+    font-size: 3rem;
+  }
+}
+
+/* Small phones: force single line wordmark */
+@media (max-width: 480px) {
+  .hero-wordmark h2 {
+    font-size: 1.6rem;
+  }
+}
+
+
+/* Hero column layout on desktop */
+@media (min-width: 1025px) {
+  .hero {
+    display: flex;
+    flex-direction: row;
+  }
+  .hero-col {
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-image-wrapper {
+    flex: 0 0 60%;
+  }
+  /* Remove order:-1 and related desktop rules on .hero-wordmark */
+}

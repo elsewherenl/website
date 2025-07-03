@@ -77,6 +77,13 @@ body {
     font-weight: 400;
 }
 
+
+/* Logo */
+.hero-logo-line {
+  font-family: var(--font-body) !important;
+}
+
+
 .title {
     font-weight: 700;
     font-size: 1.75rem;

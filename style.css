@@ -5,12 +5,14 @@
     --lapis: #2552FF;
     --biscuit: #D6B370;
     --font: 'IBM Plex Mono', monospace;
+    --font-title: 'Space Grotesk', sans-serif;
+    --font-body: 'Satoshi', sans-serif;
 }
 
 body {
     background: var(--offwhite);
     color: var(--black);
-    font-family: var(--font);
+    font-family: var(--font-body);
     line-height: 1.4;
     margin: 0;
     padding: 0;
@@ -89,6 +91,7 @@ body {
     font-size: 1.75rem;
     margin-bottom: 0.25rem;
     line-height: 1.1;
+    font-family: var(--font-title);
 }
 
 .tagline {

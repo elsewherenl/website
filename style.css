@@ -5,7 +5,7 @@
     --lapis: #2552FF;
     --biscuit: #D6B370;
     --font: 'IBM Plex Mono', monospace;
-    --font-title: 'Space Grotesk', sans-serif;
+    --font-title: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
     --font-body: 'Satoshi', sans-serif;
 }
 
@@ -55,36 +55,39 @@ body {
     max-width: 100%;
 }
 
+/* UPDATED LOGO - EDITORIAL STAMP VERSION */
 .hero-logo {
-    width: 50px;
-    height: 50px;
-    background: var(--black);
-    border: 2px solid var(--biscuit);
-    border-radius: 50%;
-    padding: 0.3rem;
+    width: 12vw;
+    height: 12vw;
+    min-width: 55px;
+    min-height: 55px;
+    max-width: 80px;
+    max-height: 80px;
+    background: var(--offwhite);
+    border: 2px solid var(--black);
+    border-radius: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-end;
     margin: 0 auto 0.75rem auto;
     text-decoration: none;
+    padding: 0.25rem 0.25rem 0.4rem 0.35rem;
+    box-sizing: border-box;
 }
 
 .hero-logo-line {
     display: block;
     margin: 0;
-    font-size: 0.75rem;
-    line-height: 1;
-    color: var(--offwhite);
-    font-weight: 400;
+    font-size: 0.8vw;
+    min-font-size: 0.4rem;
+    max-font-size: 0.7rem;
+    line-height: 0.8;
+    color: var(--black);
+    font-weight: 500;
+    font-family: var(--font-title);
+    font-size: clamp(0.4rem, 0.8vw, 0.7rem);
 }
-
-
-/* Logo */
-.hero-logo-line {
-  font-family: var(--font-body) !important;
-}
-
 
 .title {
     font-weight: 700;
@@ -218,15 +221,20 @@ body {
     }
     
     .hero-logo {
-        width: 70px;
-        height: 70px;
-        border: 3px solid var(--biscuit);
-        padding: 0.4rem;
+        width: 10vw;
+        height: 10vw;
+        min-width: 60px;
+        min-height: 60px;
+        max-width: 90px;
+        max-height: 90px;
+        border: 3px solid var(--black);
+        padding: 0.3rem 0.3rem 0.5rem 0.5rem;
         margin-bottom: 1rem;
     }
     
     .hero-logo-line {
-        font-size: 1.1rem;
+        font-size: clamp(0.5rem, 1vw, 0.8rem);
+        line-height: 0.8;
     }
     
     .title {
@@ -322,20 +330,25 @@ body {
     }
     
     .hero-logo {
-        width: 70px;
-        height: 70px;
-        background: var(--black);
-        border: 3px solid var(--biscuit);
-        border-radius: 50%;
-        padding: 0.4rem;
+        width: 8vw;
+        height: 8vw;
+        min-width: 65px;
+        min-height: 65px;
+        max-width: 85px;
+        max-height: 85px;
+        background: var(--offwhite);
+        border: 3px solid var(--black);
+        border-radius: 0;
+        padding: 0.3rem 0.3rem 0.5rem 0.5rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-end;
         margin: 0 0 1.5rem 0;
         cursor: none !important;
         transition: transform 0.2s ease;
         text-decoration: none;
+        box-sizing: border-box;
     }
     
     .hero-logo:hover {
@@ -343,7 +356,11 @@ body {
     }
     
     .hero-logo-line {
-        font-size: 1.1rem;
+        font-size: clamp(0.5rem, 1vw, 0.75rem);
+        color: var(--black);
+        font-weight: 500;
+        font-family: var(--font-title);
+        line-height: 0.8;
     }
     
     .title {
@@ -490,20 +507,25 @@ body {
     }
     
     .hero-logo {
-        width: 70px;
-        height: 70px;
-        background: var(--black);
-        border: 3px solid var(--biscuit);
-        border-radius: 50%;
-        padding: 0.4rem;
+        width: 8vw;
+        height: 8vw;
+        min-width: 65px;
+        min-height: 65px;
+        max-width: 85px;
+        max-height: 85px;
+        background: var(--offwhite);
+        border: 3px solid var(--black);
+        border-radius: 0;
+        padding: 0.3rem 0.3rem 0.5rem 0.5rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-end;
         margin: 0 0 1.5rem 0;
         cursor: none !important;
         transition: transform 0.2s ease;
         text-decoration: none;
+        box-sizing: border-box;
     }
     
     .hero-logo:hover {
@@ -511,7 +533,11 @@ body {
     }
     
     .hero-logo-line {
-        font-size: 1.1rem;
+        font-size: clamp(0.5rem, 1vw, 0.75rem);
+        color: var(--black);
+        font-weight: 500;
+        font-family: var(--font-title);
+        line-height: 0.8;
     }
     
     .title {
@@ -649,6 +675,13 @@ body {
   }
 }
 
+/* Additional mobile optimization for touch targets */
+@media (max-width: 767px) {
+  .hero-logo {
+    min-width: 55px;
+    min-height: 55px;
+  }
+}
 
 /* Hero column layout on desktop */
 @media (min-width: 1025px) {

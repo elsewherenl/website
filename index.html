@@ -1,73 +1,1287 @@
-<!-- MAJOR_UPDATE_v3.0.0_COMPLETE_REDESIGN_20250613_15:30_FORCE_DEPLOY_NOW -->
+<!-- MAJOR_UPDATE_v3.1.0_COMPLETE_REDESIGN_20250613_15:30_FORCE_DEPLOY_NOW -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<title>Elsewhere Collective - Contemporary photography collection</title>
-<meta name="description" content="New voices, celebrated perspectives in contemporary photography. Thoughtfully curated. Limited editions. Ready to collect.">
-   <!-- Open Graph Tags -->
-   <meta property="og:title" content="Elsewhere Collective">
-   <meta property="og:description" content="New voices, celebrated perspectives in contemporary photography. Thoughtfully curated. Limited editions. Ready to collect.">
-   <meta property="og:image" content="https://elsewherecollective.nl/og-image.png">
-   <meta property="og:url" content="https://elsewherecollective.nl">
-   <meta property="og:type" content="website">
-   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZVK7P7J3D"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Elsewhere Collective | Curated Contemporary Photography | Emerging Artists</title>
+    <meta name="title" content="Elsewhere Collective | Curated Contemporary Photography | Emerging Artists">
+    <meta name="description" content="Discover and collect contemporary photography from emerging artists. Limited edition prints, distinctive voices, wall-worthy presence. Championing photographers who challenge perceptions.">
+    <meta name="keywords" content="contemporary photography, emerging photographers, limited edition prints, curated photography, art collection, photography prints, Amsterdam gallery, fine art photography">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://elsewherecollective.nl/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://elsewherecollective.nl/">
+    <meta property="og:title" content="Elsewhere Collective | Curated Contemporary Photography">
+    <meta property="og:description" content="Championing contemporary photographers with distinctive voices and wall-worthy presence. Discover emerging artists and limited edition prints.">
+    <meta property="og:image" content="https://elsewherecollective.nl/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://elsewherecollective.nl/">
+    <meta property="twitter:title" content="Elsewhere Collective | Curated Contemporary Photography">
+    <meta property="twitter:description" content="Championing contemporary photographers with distinctive voices and wall-worthy presence. Discover emerging artists and limited edition prints.">
+    <meta property="twitter:image" content="https://elsewherecollective.nl/og-image.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CONDITIONAL GOOGLE ANALYTICS - Only loads with user consent -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-NZVK7P7J3D');
+        console.log('Checking cookie consent for GA...');
+        if (localStorage.getItem('analyticsConsent') === 'true') {
+            console.log('✅ Loading Google Analytics with user consent');
+            
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NZVK7P7J3D');
+            
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NZVK7P7J3D';
+            document.head.appendChild(script);
+            
+        } else {
+            console.log('❌ Google Analytics blocked - no consent given');
+        }
     </script>
+
+    <!-- FIXED: Correct file paths for Silktide -->
+    <link rel="stylesheet" id="silktide-consent-manager-css" href="cookie-banner/silktide-consent-manager.css">
+    <script src="cookie-banner/silktide-consent-manager.js"></script>
+    
+    <!-- Cookie Banner Configuration -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if Silktide is loaded
+        if (typeof silktideCookieBannerManager !== 'undefined') {
+            // Use Silktide if available
+            silktideCookieBannerManager.updateCookieBannerConfig({
+                background: {
+                    showBackground: true
+                },
+                cookieIcon: {
+                    position: "bottomRight"
+                },
+                cookieTypes: [
+                    {
+                        id: "necessary",
+                        name: "Necessary",
+                        description: "<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>",
+                        required: true,
+                        onAccept: function() {
+                            console.log('Necessary cookies accepted');
+                        }
+                    },
+                    {
+                        id: "analytics",
+                        name: "Analytics",
+                        description: "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
+                        required: false,
+                        onAccept: function() {
+                            localStorage.setItem('analyticsConsent', 'true');
+                            if (typeof gtag !== 'undefined') {
+                                gtag('consent', 'update', {
+                                    analytics_storage: 'granted',
+                                });
+                                dataLayer.push({
+                                    'event': 'consent_accepted_analytics',
+                                });
+                            }
+                            loadAnalytics();
+                        },
+                        onReject: function() {
+                            localStorage.setItem('analyticsConsent', 'false');
+                            if (typeof gtag !== 'undefined') {
+                                gtag('consent', 'update', {
+                                    analytics_storage: 'denied',
+                                });
+                            }
+                        }
+                    }
+                ],
+                text: {
+                    banner: {
+                        description: "<p>We use cookies to analyse site usage and improve your experience. <a href=\"https://elsewherecollective.nl/cookie-policy\" target=\"_blank\">Cookie Policy.</a></p>",
+                        acceptAllButtonText: "OK",
+                        acceptAllButtonAccessibleLabel: "Accept all cookies",
+                        rejectNonEssentialButtonText: "Essential Only",
+                        rejectNonEssentialButtonAccessibleLabel: "Essential cookies only",
+                        preferencesButtonText: "Settings",
+                        preferencesButtonAccessibleLabel: "Cookie preferences"
+                    },
+                    preferences: {
+                        title: "Cookie Settings",
+                        description: "<p>Choose which cookies you'd like to enable. Essential cookies are required for the site to function and cannot be disabled.</p>",
+                        creditLinkText: "",
+                        creditLinkAccessibleLabel: ""
+                    }
+                },
+                position: {
+                    banner: "bottomRight"
+                }
+            });
+        } else {
+            // Fallback: Custom cookie banner if Silktide fails to load
+            console.log('Silktide not available, using custom cookie banner');
+            initCustomCookieBanner();
+        }
+        
+        function loadAnalytics() {
+            if (!window.dataLayer) {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-NZVK7P7J3D');
+                
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NZVK7P7J3D';
+                document.head.appendChild(script);
+                
+                console.log('✅ Analytics loaded via cookie banner');
+            }
+        }
+        
+        function initCustomCookieBanner() {
+            const cookieConsent = localStorage.getItem('cookieConsent');
+            
+            if (!cookieConsent) {
+                const banner = document.createElement('div');
+                banner.className = 'cookie-banner show';
+                banner.innerHTML = `
+                    <div class="cookie-content">
+                        <div class="cookie-text">
+                            We use cookies to analyse site usage and improve your experience.
+                            <a href="https://elsewherecollective.nl/cookie-policy" target="_blank" class="cookie-link">Cookie Policy</a>
+                        </div>
+                        <div class="cookie-actions">
+                            <button class="cookie-button" id="acceptCookies">Accept All</button>
+                            <span class="essential-link" id="essentialOnly">Essential Only</span>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(banner);
+                
+                document.getElementById('acceptCookies').onclick = function() {
+                    localStorage.setItem('cookieConsent', 'accepted');
+                    localStorage.setItem('analyticsConsent', 'true');
+                    banner.remove();
+                    loadAnalytics();
+                };
+                
+                document.getElementById('essentialOnly').onclick = function() {
+                    localStorage.setItem('cookieConsent', 'essential');
+                    localStorage.setItem('analyticsConsent', 'false');
+                    banner.remove();
+                };
+            } else if (cookieConsent === 'accepted') {
+                loadAnalytics();
+            }
+        }
+    });
+    </script>
+
+    <style>
+        :root {
+            --cream-bg: #F3EFE9;
+            --deep-charcoal: #2C2C2C;
+            --warm-gray: #8A8580;
+            --warm-off-white: #FDFCF8;
+            --biscuit-gold: #D6B370;
+            --sage-green: #A8B5A0;
+            --soft-terracotta: #C4A394;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream-bg);
+            color: var(--deep-charcoal);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(243, 239, 233, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(44, 44, 44, 0.1);
+            z-index: 1000;
+            padding: 1.5rem 0;
+        }
+
+        .header-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--deep-charcoal);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-transform: lowercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--biscuit-gold);
+            letter-spacing: 0.08em;
+            transform: scale(1.02);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--deep-charcoal);
+            font-weight: 300;
+            font-size: 1.1rem;
+            letter-spacing: 0.01em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--biscuit-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--cream-bg);
+            padding: 10rem 0 3rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1600px;
+            width: 100%;
+            padding: 0 3rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-gallery {
+            justify-self: center;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--deep-charcoal);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--warm-gray);
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--warm-gray);
+            line-height: 1.4;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--deep-charcoal);
+            text-decoration: none;
+            font-weight: 300;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(44, 44, 44, 0.2);
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-cta:hover {
+            background: var(--sage-green);
+            color: var(--warm-off-white);
+            border-color: var(--sage-green);
+        }
+
+        .hero-cta::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Featured Section */
+        .featured {
+            padding: 1rem 0 1rem 0;
+            background: var(--cream-bg);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
+            margin-top: -1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 0.25rem;
+            color: var(--deep-charcoal);
+        }
+
+        .section-description {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--warm-gray);
+            max-width: 450px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0.5rem auto 0;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s ease;
+        }
+
+        .featured-work {
+            flex: 0 0 100%;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+
+        .featured-work.active {
+            opacity: 1;
+        }
+
+        .work-image {
+            flex: 0 0 450px;
+            height: 400px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .work-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .work-info {
+            flex: 1;
+            padding: 0;
+            padding-right: 2rem;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(44, 44, 44, 0.2);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--biscuit-gold);
+        }
+
+        .work-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--deep-charcoal);
+        }
+
+        .work-artist {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--biscuit-gold);
+            margin-bottom: 1rem;
+        }
+
+        .work-description {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--warm-gray);
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+        }
+
+        .work-instagram {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .work-instagram a {
+            color: var(--warm-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .work-instagram a:hover {
+            color: var(--biscuit-gold);
+            border-bottom: 1px solid var(--biscuit-gold);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 2rem 0;
+            background: var(--deep-charcoal);
+            color: var(--warm-off-white);
+        }
+
+        .newsletter-content {
+            text-align: left;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .newsletter-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-description {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(253, 252, 248, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.4;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+            max-width: 400px;
+            margin: 0;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid rgba(253, 252, 248, 0.2);
+            background: transparent;
+            color: var(--warm-off-white);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(253, 252, 248, 0.5);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--biscuit-gold);
+        }
+
+        .newsletter-button {
+            padding: 1rem 2.5rem;
+            background: var(--biscuit-gold);
+            color: var(--deep-charcoal);
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .newsletter-button:hover {
+            background: var(--sage-green);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(168, 181, 160, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem 0 1rem;
+            background: var(--cream-bg);
+            border-top: 1px solid rgba(44, 44, 44, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 2rem;
+            max-width: 1600px;
+            margin: 0 auto 2rem auto;
+            padding: 0 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--deep-charcoal);
+        }
+
+        .footer-section a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--warm-gray);
+            text-decoration: none;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a span {
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .footer-section a:hover span {
+            border-bottom: 1px solid var(--biscuit-gold);
+            color: var(--biscuit-gold);
+        }
+
+        .footer-section svg {
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            text-align: left;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(44, 44, 44, 0.1);
+            max-width: 1600px;
+            margin: 0 auto;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        .footer-bottom p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--warm-gray);
+        }
+
+        /* Fullscreen Gallery */
+        .fullscreen-gallery {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .fullscreen-gallery.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .fullscreen-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-image {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            background: none !important;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .fullscreen-image.portrait {
+            max-width: 60%;
+            max-height: 95%;
+        }
+
+        .fullscreen-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-nav:hover {
+            background: var(--biscuit-gold);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .fullscreen-prev {
+            left: -80px;
+        }
+
+        .fullscreen-next {
+            right: -80px;
+        }
+
+        .fullscreen-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-close:hover {
+            background: var(--biscuit-gold);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Cookie Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--deep-charcoal);
+            color: var(--warm-off-white);
+            padding: 1rem 2rem;
+            z-index: 10000;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            display: none;
+        }
+
+        .cookie-banner.show {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .cookie-text {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--warm-off-white);
+            line-height: 1.4;
+        }
+
+        .cookie-link {
+            color: var(--biscuit-gold);
+            text-decoration: none;
+            border-bottom: 1px solid var(--biscuit-gold);
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-link:hover {
+            color: var(--warm-off-white);
+            border-bottom-color: var(--warm-off-white);
+        }
+
+        .cookie-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .cookie-button {
+            background: var(--biscuit-gold);
+            color: var(--deep-charcoal);
+            border: none;
+            padding: 0.6rem 1.25rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-button:hover {
+            background: var(--sage-green);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .essential-link {
+            color: rgba(253, 252, 248, 0.7);
+            font-size: 0.8rem;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .essential-link:hover {
+            color: var(--warm-off-white);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem 0;
+            }
+
+            .header-container {
+                padding: 0 2rem;
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: center;
+            }
+
+            .logo {
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-menu {
+                gap: 2rem;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero {
+                padding-top: 10rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 2rem;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                margin-top: 0;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .featured-work {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .work-image {
+                flex: none;
+                width: 100%;
+                max-width: 350px;
+                height: 300px;
+                margin: 0 auto;
+            }
+
+            .work-info {
+                padding-right: 0;
+            }
+
+            .footer-content {
+                text-align: left;
+                padding: 0 2rem;
+            }
+
+            .footer-bottom {
+                text-align: left;
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .newsletter-content {
+                text-align: left;
+                padding: 0 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .newsletter {
+                padding: 3rem 0;
+            }
+
+            .cookie-banner {
+                padding: 1rem;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .cookie-actions {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 9rem;
+            }
+            
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .nav-menu {
+                gap: 1.5rem;
+            }
+            
+            .nav-menu a {
+                font-size: 1rem;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <main>
-        <section class="hero">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#hero" class="logo">elsewhere collective</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="spotlight.html">Spotlight</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero fade-in" id="hero">
+        <div class="hero-content">
             <div class="hero-text">
-                     <a href="/" class="hero-logo" aria-label="Elsewhere Collective home">
-                    <span class="hero-logo-line">else</span>
-                    <span class="hero-logo-line">where</span>
-                    <span class="hero-logo-line">collective</span>
-                </a>
-                
-                <h1 class="title">
-                    A space for distinct perspectives and the artists behind them.
-                </h1>
-                <p class="tagline">Curated, collectible, and limited-edition photography.</p>
+                <h1 class="hero-title">Championing contemporary photographers with distinctive voices and wall-worthy presence.</h1>
+            </div>
+            <div class="hero-gallery">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="featured-work active">
+                            <div class="work-image">
+                                <img src="https://raw.githubusercontent.com/elsewherenl/artistcards/refs/heads/main/Amy%20Querin.png" alt="Dare alla luce by Amy Friend" loading="lazy">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">Dare alla luce</h3>
+                                <p class="work-artist">Amy Friend</p>
+                                <p class="work-description">Exploring the transient nature of photographs and their influence on personal and collective memory.</p>
+                                <p class="work-instagram"><a href="https://www.instagram.com/amyquerin/" target="_blank">@amyquerin</a></p>
+                            </div>
+                        </div>
 
-                <p class="coming-soon">Launching soon with our inaugural collection…</p>
-                <div class="hero-underline"></div>
-                <div class="subscribe-block">
-                    <label class="subscribe-label">Join us from the beginning:</label>
-                    <form class="subscribe-form" action="https://formspree.io/f/mzzgebky" method="POST">
-                        <input type="email" name="email" placeholder="Enter your email" class="subscribe-input" required>
-                        <button type="submit" class="subscribe-button">Subscribe</button>
-                    </form>
+                        <div class="featured-work">
+                            <div class="work-image">
+                                <img src="https://raw.githubusercontent.com/elsewherenl/artistcards/refs/heads/main/KinnCoedel.png" alt="Mongolia by Kinn Coedel" loading="lazy">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">Mongolia</h3>
+                                <p class="work-artist">Kinn Coedel</p>
+                                <p class="work-description">A tender glimpse into the lives of Inner Mongolia's nomadic people.</p>
+                                <p class="work-instagram"><a href="https://www.instagram.com/kinbykin/" target="_blank">@kinbykin</a></p>
+                            </div>
+                        </div>
+
+                        <div class="featured-work">
+                            <div class="work-image">
+                                <img src="https://raw.githubusercontent.com/elsewherenl/website/refs/heads/main/Vakho%20Khetaguri.png" alt="Cambodia by Vakho Khetaguri" loading="lazy">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">Cambodia</h3>
+                                <p class="work-artist">Vakho Khetaguri</p>
+                                <p class="work-description">From the series Tbilisi to Siem Reap</p>
+                                <p class="work-instagram"><a href="https://www.instagram.com/vakhokhetaguri0/" target="_blank">@vakhokhetaguri0</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-indicators">
+                        <div class="indicator active" data-slide="0"></div>
+                        <div class="indicator" data-slide="1"></div>
+                        <div class="indicator" data-slide="2"></div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-            </div>
-            <div class="hero-image-wrapper">
-                <img class="hero-image" src="https://images.unsplash.com/photo-1611554949651-aa681b0a21d3?q=80&w=3019&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Black and white photography of delicate flowers">
-            </div>
-            <div class="hero-wordmark">
-              <h2>elsewhere collective</h2>
-            </div>
-        </section>
-    </main>
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="newsletter-content">
+            <h2 class="newsletter-title">Join us from the beginning</h2>
+            <p class="newsletter-description">Sign-up for early access to limited edition releases. Receive updates on featured artists and new releases.</p>
+            <form class="newsletter-form" action="https://formspree.io/f/mzzgebky" method="POST">
+                <input 
+                    type="email" 
+                    name="email"
+                    class="newsletter-input" 
+                    placeholder="Enter your email" 
+                    required
+                >
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+        </div>
+    </section>
 
-    <footer class="site-footer">
-        <p class="footer-line">Amsterdam 2025</p>
-        <p class="footer-line">Contact: <a href="mailto:hello@elsewherecollective.nl">hello@elsewherecollective.nl</a></p>
-        <p class="footer-line">Follow: <a href="https://instagram.com/else.where.collective" target="_blank">@else.where.collective</a></p>
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Enquiries</h4>
+                <a href="mailto:hello@elsewherecollective.nl">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#D6B370" stroke-width="1.5" fill="none"/>
+                        <path d="M22 6L12 13L2 6" stroke="#D6B370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>hello@elsewherecollective.nl</span>
+                </a>
+                <a href="https://instagram.com/else.where.collective" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#D6B370" stroke-width="1.5" fill="none"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke="#D6B370" stroke-width="1.5" fill="none"/>
+                        <circle cx="17.5" cy="6.5" r="1.5" fill="#D6B370"/>
+                    </svg>
+                    <span>@else.where.collective</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Elsewhere Collective. All rights reserved.</p>
+        </div>
     </footer>
+    
+    <!-- Fullscreen Gallery -->
+    <div class="fullscreen-gallery" id="fullscreenGallery">
+        <div class="fullscreen-content">
+            <img class="fullscreen-image" id="fullscreenImage" src="" alt="">
+            <button class="fullscreen-nav fullscreen-prev" id="fullscreenPrev">‹</button>
+            <button class="fullscreen-nav fullscreen-next" id="fullscreenNext">›</button>
+            <button class="fullscreen-close" id="fullscreenClose">×</button>
+        </div>
+    </div>
 
-    <div id="cursor"></div>
-    <script src="script.js"></script>
+    <script>
+        const galleryWorks = [
+            {
+                image: "https://raw.githubusercontent.com/elsewherenl/artistcards/refs/heads/main/Amy%20Querin.png",
+                title: "Dare alla luce",
+                artist: "Amy Friend"
+            },
+            {
+                image: "https://raw.githubusercontent.com/elsewherenl/artistcards/refs/heads/main/Kin%20by%20Kin.png",
+                title: "Mongolia",
+                artist: "Kinn Coedel"
+            },
+            {
+                image: "https://raw.githubusercontent.com/elsewherenl/website/refs/heads/main/Vakho%20Khetaguri.png",
+                title: "Cambodia",
+                artist: "Vakho Khetaguri"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carousel functionality
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.featured-work');
+            const indicators = document.querySelectorAll('.indicator');
+            let slideInterval;
+
+            // Add click handlers to work images for fullscreen
+            const workImages = document.querySelectorAll('.work-image');
+            workImages.forEach((image, index) => {
+                image.addEventListener('click', () => openFullscreen(index));
+            });
+
+            // Add click handlers to indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    showSlide(index);
+                    stopSlideshow();
+                    startSlideshow();
+                });
+            });
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                
+                if (slides[index]) {
+                    const trackContainer = document.querySelector('.carousel-track');
+                    trackContainer.style.transform = `translateX(-${index * 100}%)`;
+                    
+                    slides[index].classList.add('active');
+                    indicators[index].classList.add('active');
+                    currentSlide = index;
+                }
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function startSlideshow() {
+                slideInterval = setInterval(nextSlide, 10000);
+            }
+
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+
+            showSlide(0);
+            startSlideshow();
+
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', stopSlideshow);
+            carouselContainer.addEventListener('mouseleave', startSlideshow);
+
+            // Fullscreen Gallery
+            let currentFullscreenIndex = 0;
+            const fullscreenGallery = document.getElementById('fullscreenGallery');
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            const fullscreenPrev = document.getElementById('fullscreenPrev');
+            const fullscreenNext = document.getElementById('fullscreenNext');
+            const fullscreenClose = document.getElementById('fullscreenClose');
+
+            function openFullscreen(index) {
+                currentFullscreenIndex = index;
+                const work = galleryWorks[index];
+                
+                fullscreenImage.src = work.image;
+                fullscreenImage.alt = `${work.title} by ${work.artist}`;
+                
+                fullscreenImage.onload = function() {
+                    if (this.naturalHeight > this.naturalWidth) {
+                        this.classList.add('portrait');
+                    } else {
+                        this.classList.remove('portrait');
+                    }
+                };
+                
+                fullscreenGallery.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeFullscreen() {
+                fullscreenGallery.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            function showPrevious() {
+                currentFullscreenIndex = (currentFullscreenIndex - 1 + galleryWorks.length) % galleryWorks.length;
+                const work = galleryWorks[currentFullscreenIndex];
+                fullscreenImage.src = work.image;
+                fullscreenImage.alt = `${work.title} by ${work.artist}`;
+                
+                fullscreenImage.onload = function() {
+                    if (this.naturalHeight > this.naturalWidth) {
+                        this.classList.add('portrait');
+                    } else {
+                        this.classList.remove('portrait');
+                    }
+                };
+            }
+
+            function showNext() {
+                currentFullscreenIndex = (currentFullscreenIndex + 1) % galleryWorks.length;
+                const work = galleryWorks[currentFullscreenIndex];
+                fullscreenImage.src = work.image;
+                fullscreenImage.alt = `${work.title} by ${work.artist}`;
+                
+                fullscreenImage.onload = function() {
+                    if (this.naturalHeight > this.naturalWidth) {
+                        this.classList.add('portrait');
+                    } else {
+                        this.classList.remove('portrait');
+                    }
+                };
+            }
+
+            fullscreenClose.addEventListener('click', closeFullscreen);
+            fullscreenPrev.addEventListener('click', showPrevious);
+            fullscreenNext.addEventListener('click', showNext);
+
+            document.addEventListener('keydown', function(e) {
+                if (fullscreenGallery.classList.contains('active')) {
+                    if (e.key === 'Escape') closeFullscreen();
+                    if (e.key === 'ArrowLeft') showPrevious();
+                    if (e.key === 'ArrowRight') showNext();
+                }
+            });
+
+            fullscreenGallery.addEventListener('click', function(e) {
+                if (e.target === fullscreenGallery) closeFullscreen();
+            });
+
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 120;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
